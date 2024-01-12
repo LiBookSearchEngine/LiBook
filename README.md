@@ -13,7 +13,7 @@ The underlying communication between modules is given by internal APIs and the u
 
 <br>
 
-<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_2.png" alt="Image for Dark Mode">
+<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_3.png" alt="Image for Dark Mode">
 
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
