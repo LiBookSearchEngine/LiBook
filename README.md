@@ -11,7 +11,7 @@ In this repository, you can find the source code for building up an inverted ind
 
 The underlying communication between modules is given by internal APIs and the use of ActiveMQ, which will be removed in the future and substituted by Hazelcast or Kafka due to its vulnerabilities. However, ActiveMQ doesn't access user's data but stands for book notifications.
 
-![Architecture Desing](https://github.com/ricardocardn/LiBook/blob/master/resources/arq.png)
+![Architecture Desing](https://github.com/ricardocardn/LiBook/blob/master/resources/arq_dark.png)
 
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
