@@ -3,16 +3,17 @@
 In this repository, you can find the source code for building up an inverted index based search engine for books obtained from both Project Gutenberg and registered users' accounts directly. We also implemented both relational and non-relational datamarts to be able to make queries on the available books. This is a micro-service-oriented application that consists of the next modules:
 - <b>Crawler</b>: Obtains books directly from [Project Gutemberg](https://www.gutenberg.org/) book platform and stores them into our datalake.
 - <b>Cleaner</b>: Processes the books and prepares them to be indexed.
-- <b>Indexer</b>: Indexes the books into our inverted index structure, located in hazelcast.
+- <b>Indexer</b>: Indexes the books into our inverted index structure in Hazelcast.
 - <b>QueryEngine</b>: Offers an API for users to be able to query our inverted index.
-- <b>UserService</b>: Handles users' accounts in MongoDB, and session tokens through a distributed hazelcast datamart.
+- <b>UserService</b>: Handles users' accounts in MongoDB, and session tokens through a distributed Hazelcast datamart.
 - <b>UserBookProcessor</b>: Processes the books uploaded by users and sends them to the cleaner.
-- <b>ApiGateway</b>: Serves as an API gateway to connect all the public APIs of the final application as a single to the user.
+- <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application.
 
+The underlying communication between modules is given by internal APIs and the use of ActiveMQ, which will be removed in the future and substituted by Hazelcast or Kafka due to its vulnerabilities. However, ActiveMQ doesn't access user's data but stands for book notifications.
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
 
-For each module you should generate the corresponding docker image. If we take the indexer as a reference, a command like the following should be executed
+For each module, you should generate the corresponding docker image. If we take the indexer as a reference, a command like the following should be executed
 
 ```
 docker build -t ricardocardn/indexer path_to_repo/Indexer/.
