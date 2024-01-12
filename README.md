@@ -7,7 +7,7 @@ In this repository, you can find the source code for building up an inverted ind
 - <b>QueryEngine</b>: Offers an API for users to be able to query our inverted index.
 - <b>UserService</b>: Handles users' accounts in MongoDB, and session tokens through a distributed Hazelcast datamart.
 - <b>UserBookProcessor</b>: Processes the books uploaded by users and sends them to the cleaner.
-- <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application.
+- <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application, improving security on petitions.
 
 The underlying communication between modules is given by internal APIs and the use of ActiveMQ, which will be removed in the future and substituted by Hazelcast or Kafka due to its vulnerabilities. However, ActiveMQ doesn't access user's data but stands for book notifications.
 <br>
