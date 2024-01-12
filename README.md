@@ -10,6 +10,9 @@ In this repository, you can find the source code for building up an inverted ind
 - <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application, improving security on petitions.
 
 The underlying communication between modules is given by internal APIs and the use of ActiveMQ, which will be removed in the future and substituted by Hazelcast or Kafka due to its vulnerabilities. However, ActiveMQ doesn't access user's data but stands for book notifications.
+
+![Architecture Desing](https://github.com/ricardocardn/LiBook/blob/master/resources/arq.png)
+
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
 
