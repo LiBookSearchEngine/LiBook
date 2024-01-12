@@ -1,4 +1,4 @@
-<h1 align="center">LiBook: Book Search Engine 🔍 </h1>
+<h1 align="center">LiBook: Book Search Engine 🔍</h1>
 
 In this repository, you can find the source code for building up an inverted index based search engine for books obtained from both Project Gutenberg and registered users' accounts directly. We also implemented both relational and non-relational datamarts to be able to make queries on the available books. This is a micro-service-oriented application that consists of the next modules:
 - Crawler: Obtains books directly from [Project Gutemberg](https://www.gutenberg.org/) book platform and stores them into our datalake.
@@ -6,7 +6,7 @@ In this repository, you can find the source code for building up an inverted ind
 - Indexer: Indexes the books into our inverted index structure, located in hazelcast.
 - QueryEngine: Offers an API for users to be able to query our inverted index.
 - UserService: Handles users' accounts in MongoDB, and session tokens through a distributed hazelcast datamart.
-- UsersBookProcessor: Processes the books uploaded by users and sends them to the cleaner.
+- UserBookProcessor: Processes the books uploaded by users and sends them to the cleaner.
 - ApiGateway: Serves as an API gateway to connect all the public APIs of the final application as a single to the user.
 
 <br>
