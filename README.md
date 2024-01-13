@@ -16,6 +16,16 @@ The underlying communication between modules is given by internal APIs and the u
 <img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_3.png" alt="Image for Dark Mode">
 
 <br>
+
+For the future, we will also have a datamart to directly query our books based on metadata, instead of the content. To do so, we should build MetadataDatamartBuilder, a micro-service that will be dedicated to the translation of incoming books' metadata, which could be obtained through Cleaner's API, into the datamart. It will also have a connection to ActiveMQ, or Kafka, to be able to now when the Cleaner application has inserted new metadata into the datalake, thanks to the notification system already in use.
+
+<br>
+
+<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_future.png" alt="Image for Dark Mode">
+
+<br>
+
+<br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
 
 For each module, you should generate the corresponding docker image. If we take the indexer as a reference, a command like the following should be executed
