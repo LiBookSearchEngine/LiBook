@@ -9,6 +9,7 @@
         <module name="Indexer" />
         <module name="UserService" />
         <module name="UserBooksProcessor" />
+        <module name="MetadataDatamartBuilder" />
         <module name="QueryEngine" />
         <module name="Crawler" />
         <module name="ApiGateway" />

@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/../UserService/pom.xml" />
         <option value="$PROJECT_DIR$/../ApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/../UserBooksProcessor/pom.xml" />
+        <option value="$PROJECT_DIR$/../MetadataDatamartBuilder/pom.xml" />
       </list>
     </option>
   </component>
