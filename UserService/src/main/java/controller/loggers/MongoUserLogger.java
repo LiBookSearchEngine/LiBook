@@ -16,8 +16,8 @@ public class MongoUserLogger implements UserLogger{
     private final UserLoader userLoader;
     private final MongoConnection datamartConnection;
 
-    public MongoUserLogger(MongoConnection datamartConnection) {
-        this.sessionHandler = new SessionHazelcastHandler();
+    public MongoUserLogger(MongoConnection datamartConnection, SessionHandler sessionHandler) {
+        this.sessionHandler = sessionHandler;
         this.userLoader = new MongoUserLoader(datamartConnection);
         this.datamartConnection = datamartConnection;
     }

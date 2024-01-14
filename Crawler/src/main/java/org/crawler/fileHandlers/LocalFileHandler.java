@@ -42,10 +42,16 @@ public class LocalFileHandler implements FileHandler{
         File[] filesInLastDirectory = directory.listFiles();
         if (filesInLastDirectory != null && filesInLastDirectory.length > 0) {
             Arrays.sort(filesInLastDirectory, (file1, file2) -> Long.compare(file2.lastModified(), file1.lastModified()));
-            return Integer.parseInt(filesInLastDirectory[0].getName().replace(".txt", ""));
+            for (File file : filesInLastDirectory) {
+                try {
+                    return Integer.parseInt(file.getName().replace(".txt", ""));
+                } catch (NumberFormatException e) {}
+            }
         } else {
             return 0;
         }
+
+        return 0;
 
     }
 

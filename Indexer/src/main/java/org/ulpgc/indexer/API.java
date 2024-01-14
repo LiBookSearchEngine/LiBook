@@ -17,7 +17,7 @@ public class API {
     }
 
     public void run() {
-        port(8081);
+        port(8082);
         get("word/:word", (req, res) -> invertedIndex.get(req.params("word")));
         get("indexed/count", (req, res) -> Main.INDEXED_BOOKS);
     }

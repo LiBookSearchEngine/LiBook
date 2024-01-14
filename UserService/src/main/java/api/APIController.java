@@ -23,16 +23,16 @@ public class APIController {
     private final DatamartBookHandler bookHandler;
     private final SessionHandler sessionHandler;
 
-    public APIController() throws JMSException {
+    public APIController(SessionHandler sessionHandler) throws JMSException {
         MongoConnection mongoConnection = new MongoConnection();
-        logger = new MongoUserLogger(mongoConnection);
-        register = new MongoUserRegister(mongoConnection);
+        logger = new MongoUserLogger(mongoConnection, sessionHandler);
+        register = new MongoUserRegister(mongoConnection, sessionHandler);
         bookHandler = new MongoBookHandler(mongoConnection);
-        sessionHandler = new SessionHazelcastHandler();
+        this.sessionHandler = sessionHandler;
     }
 
     public void run() {
-        port(8080);
+        port(8082);
         login();
         signUp();
         getUserName();

@@ -4,11 +4,11 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.sun.tools.javac.Main;
 import controller.connections.MongoConnection;
 import controller.loaders.MongoUserLoader;
 import controller.loaders.UserLoader;
 import controller.sessions.SessionHandler;
-import controller.sessions.cookie.SessionHazelcastHandler;
 import model.User;
 import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
@@ -20,10 +20,10 @@ public class MongoUserRegister implements UserRegister {
     private final UserLoader userLoader;
     private final MongoConnection datamartConnection;
 
-    public MongoUserRegister(MongoConnection datamartConnection) {
+    public MongoUserRegister(MongoConnection datamartConnection, SessionHandler sessionHandler) {
         this.datamartConnection = datamartConnection;
-        userLoader = new MongoUserLoader(datamartConnection);
-        sessionHandler = new SessionHazelcastHandler();
+        this.userLoader = new MongoUserLoader(datamartConnection);
+        this.sessionHandler = sessionHandler;
     }
 
     @Override

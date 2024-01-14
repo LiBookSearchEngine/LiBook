@@ -11,7 +11,7 @@ COPY src /app/src
 # Build the project
 RUN mvn clean package
 
-CMD ["java", "-jar", "target/indexer.jar", "http://34.16.187.84", "2"]
+CMD ["java", "-jar", "target/indexer.jar", "http://34.125.120.252", "2"]
 
 #
 EXPOSE 8080

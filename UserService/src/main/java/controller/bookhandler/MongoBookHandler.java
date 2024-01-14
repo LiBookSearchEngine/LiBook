@@ -17,12 +17,10 @@ import java.util.Objects;
 public final class MongoBookHandler implements DatamartBookHandler {
     private final MongoConnection datamartConnection;
     private final ConnectionHandler httpConnectionHandler;
-    private final String SERVER_API_URL;
 
     public MongoBookHandler(MongoConnection datamartConnection) throws JMSException {
         this.datamartConnection = datamartConnection;
         this.httpConnectionHandler = new HTTPConnectionHandler();
-        this.SERVER_API_URL = System.getenv("SERVER_API_URL");
     }
 
     @Override

@@ -38,10 +38,13 @@ public class HTTPConnectionHandler implements ConnectionHandler {
 
             int responseCode = httpResponse.getStatusLine().getStatusCode();
 
+            System.out.println(finalUrl);
             if (responseCode == 200) {
+                System.out.println("Libro correctamente añadido");
                 HttpEntity entity = httpResponse.getEntity();
                 return EntityUtils.toString(entity);
             } else {
+                System.out.println("Error al subir el libro al servidor");
                 throw new RuntimeException(String.valueOf(responseCode));
             }
 
