@@ -12,7 +12,7 @@ In this repository, you can find the source code for building up an inverted ind
 
 <br>
 
-<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_future.png" alt="Image for Dark Mode">
+<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_final.png" alt="Image for Dark Mode">
 
 <br>
 
