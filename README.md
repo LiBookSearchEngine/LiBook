@@ -10,6 +10,8 @@ In this repository, you can find the source code for building up an inverted ind
 - <b>UserBookProcessor</b>: Processes the books uploaded by users and sends them to the cleaner.
 - <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application, improving security on petitions.
 
+Crucially, this project employs three distinct datamart technologies—Hazelcast, MongoDB, and Rqlite. Rqlite, based on SQLite and adapted for clustered usage, is particularly notable for its role in distributed relational database management within the application. The integration of these datamarts enhances the overall scalability, efficiency, and versatility of the search engine, accommodating both centralized and distributed data processing needs.
+
 <br>
 
 <img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_final.png" alt="Image for Dark Mode">
