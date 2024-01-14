@@ -18,6 +18,8 @@ Crucially, this project employs three distinct datamart technologies—Hazelcast
 
 <br>
 
+<p align="center"><img src="https://skills.thijs.gg/icons?i=docker,java,nginx,mongodb,sqlite,git&theme=dark"></p>
+
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
 
