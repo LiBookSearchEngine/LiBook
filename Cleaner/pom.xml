@@ -43,7 +43,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>org.ulpgc.cleaner.Main</mainClass>
+                            <mainClass>org.ulpgc.cleaner.libook.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -53,7 +53,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.4.0</version>
                 <configuration>
-                    <mainClass>org.crawler.Main</mainClass>
+                    <mainClass>org.crawler.libook.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
