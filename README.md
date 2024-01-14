@@ -4,24 +4,15 @@ In this repository, you can find the source code for building up an inverted ind
 - <b>Crawler</b>: Obtains books directly from [Project Gutemberg](https://www.gutenberg.org/) book platform and stores them into our datalake.
 - <b>Cleaner</b>: Processes the books and prepares them to be indexed.
 - <b>Indexer</b>: Indexes the books into our inverted index structure in Hazelcast.
+- <b>MetadataDatamartBuilder</b>: Creates a metadata datamart for queries.
 - <b>QueryEngine</b>: Offers an API for users to be able to query our inverted index.
 - <b>UserService</b>: Handles users' accounts in MongoDB, and session tokens through a distributed Hazelcast datamart.
 - <b>UserBookProcessor</b>: Processes the books uploaded by users and sends them to the cleaner.
 - <b>ApiGateway</b>: Serves an API merging all the public APIs of the final application, improving security on petitions.
 
-The underlying communication between modules is given by internal APIs and the use of ActiveMQ, which will be removed in the future and substituted by Hazelcast or Kafka due to its vulnerabilities. However, ActiveMQ doesn't access user's data but stands for book notifications.
-
 <br>
 
-<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_3.png" alt="Image for Dark Mode">
-
-<br>
-
-For the future, we will also have a datamart to directly query our books based on metadata, instead of the content. To do so, we should build MetadataDatamartBuilder, a micro-service that will be dedicated to the translation of incoming books' metadata, which could be obtained through Cleaner's API, into the datamart. It will also have a connection to ActiveMQ, or Kafka, to be able to now when the Cleaner application has inserted new metadata into the datalake, thanks to the notification system already in use.
-
-<br>
-
-<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_future.png" alt="Image for Dark Mode">
+<img src="https://github.com/ricardocardn/LiBook/blob/master/resources/arq_final.png" alt="Image for Dark Mode">
 
 <br>
 
