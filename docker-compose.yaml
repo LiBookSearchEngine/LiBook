@@ -4,8 +4,8 @@ services:
   mq-container:
     image: breznadam/mq-container
     ports:
-      - "61616:61616"
-      - "8161:8161"
+      - "443:61616"
+      - "8151:8161"
     container_name: mq-container
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://mq-container:8161"]
@@ -15,10 +15,36 @@ services:
 
   crawler:
     image: ricardocardn/crawler
-    ports:
-      - "80:80"
     volumes:
       - /home/ricardocardenes12/DocumentRepository:/app/DocumentsRepository
     depends_on:
       mq-container:
         condition: service_healthy
+
+  cleaner:
+    image: ricardocardn/cleaner
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/ricardocardenes12/DocumentRepository:/app/DocumentsRepository
+    depends_on:
+      mq-container:
+        condition: service_healthy
+
+  user-books-processor:
+    image: ricardocardn/user-books-processor
+    ports:
+      - "8081:8080"
+    volumes:
+      - /home/ricardocardenes12/DocumentRepository:/app/DocumentsRepository
+    depends_on:
+      mq-container:
+        condition: service_healthy
+
+  user-service:
+    image: ricardocardn/user-service
+    ports:
+      - "80:8082"
+    environment:
+      - "MONGO_ATLAS_PASSWORD=qy28sOK9uQhRJ3XT"
+      - "SERVER_API_URL=http://localhost"
