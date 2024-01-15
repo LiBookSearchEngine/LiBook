@@ -1,5 +1,7 @@
 package org.ulpgc.cleaner.controller;
 
+import org.ulpgc.cleaner.controller.message.Consumer;
+import org.ulpgc.cleaner.controller.message.Publisher;
 import org.ulpgc.cleaner.controller.message.broker.EventConsumer;
 import org.ulpgc.cleaner.controller.message.broker.EventPublisher;
 import org.ulpgc.cleaner.controller.process.Cleaner;

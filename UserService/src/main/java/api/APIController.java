@@ -9,7 +9,6 @@ import controller.loggers.UserLogger;
 import controller.registers.MongoUserRegister;
 import controller.registers.UserRegister;
 import controller.sessions.SessionHandler;
-import controller.sessions.cookie.SessionHazelcastHandler;
 import model.Book;
 import model.User;
 

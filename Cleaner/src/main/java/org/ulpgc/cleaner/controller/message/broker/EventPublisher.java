@@ -1,6 +1,6 @@
 package org.ulpgc.cleaner.controller.message.broker;
 
-import org.ulpgc.cleaner.controller.Publisher;
+import org.ulpgc.cleaner.controller.message.Publisher;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
