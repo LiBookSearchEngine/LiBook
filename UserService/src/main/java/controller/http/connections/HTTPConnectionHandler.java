@@ -56,7 +56,7 @@ public class HTTPConnectionHandler implements ConnectionHandler {
 
     private String buildUrlWithQueryParams(String path, Book book) throws Exception {
         StringBuilder urlBuilder = new StringBuilder();
-        urlBuilder.append(SERVER_API_URL + "/");
+        urlBuilder.append(SERVER_API_URL + ":8081/");
         urlBuilder.append(path + "?");
 
         setQueryParam(urlBuilder, "name", book.name());
