@@ -20,6 +20,7 @@ public class FileProcessor {
     private final Cleaner cleaner;
     private final Consumer eventConsumer;
     private final Publisher eventPublisher;
+    private final Publisher metadataPublisher;
 
     public FileProcessor(String listenedPath, Reader reader, ParseFiles parseFiles, Cleaner cleaner) throws JMSException {
         this.listenedPath = listenedPath;
@@ -28,6 +29,7 @@ public class FileProcessor {
         this.cleaner = cleaner;
         this.eventConsumer = new EventConsumer("61616", "datalakeEvents");
         this.eventPublisher = new EventPublisher("61616", "cleanerEvents");
+        this.metadataPublisher = new EventPublisher("61616", "cleanerMetadataEvents");
     }
 
     public void run() {
@@ -54,6 +56,7 @@ public class FileProcessor {
         writer.writeMetadataToDatalake(content.get(1), filePath);
 
         eventPublisher.publish("Content/" + filePath);
+        metadataPublisher.publish("Content/" + filePath);
     }
 }
 

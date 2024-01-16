@@ -12,7 +12,7 @@ public class Main {
     public static String SERVER_MQ_PORT = "443";
     public static String SERVER_API_URL = "http://34.125.120.252";
     public static String SERVER_CLEANER_PORT = "8080";
-    public static String LOCAL_MDB_API = "http://192.168.1.134";
+    public static String LOCAL_MDB_API = "http://172.20.10.4";
 
     public static void main(String[] args) throws JMSException, IOException {
         initializeDatabase();
