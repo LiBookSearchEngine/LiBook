@@ -23,25 +23,51 @@ Crucially, this project employs three distinct datamart technologies—Hazelcast
 <br>
 <h2>1) <b>How to run</b> (Docker and Docker Compose)</h2>
 
-For each module, you should generate the corresponding docker image. If we take the indexer as a reference, a command like the following should be executed
+For each module, you should generate the corresponding docker image. In our case, we will deploy in a Google Cloud virtual machine instance the Crawler, Cleaner, API Gateway, User Service and User Books Processor services. To do so, after connecting to the Google Cloud server, we execute the ```docker-compose up``` command, for the docker compose file given in this repository. Now, we have to run the micro-services that are left to the in-premise processing.
+
+<h3><b>Indexer</b></h3>
+To execute the indexer, we should run the docker image as follows:
 
 ```
-docker build -t ricardocardn/indexer path_to_repo/Indexer/.
+docker run --network host ricardocardn/indexer
 ```
 
-Or whether pull our own image directly
+Make sure you should specify the option ```--network host```, or some problems related to Hazelcast may raise.
+
+<h3><b>Metadata Datamart Builder</b></h3>
+
+To run this service, we will have to run both rqlite and metadata datamart builder images. Thus, execute the rqlite image in one single computer of your cluster:
 
 ```
-docker run -p 8081:8081 --network host ricardocardn/indexer
+docker run -p4001:4001 -p4002:4002 rqlite/rqlite
 ```
 
-(*) The specification of the option ```--network host``` is crucial, and some problems related to hazelcast could raise if omitted. The query-engine image itself could be obtained in the following way
+And, for the Metadata Datamart builder, execute:
 
+```
+docker run -e "SERVER_MQ_PORT={port}"
+            -e "SERVER_API_URL=http://{server's IP}"
+            -e "SERVER_CLEANER_PORT={cleaner's port on server}"
+            -e "LOCAL_MDB_API=http://{rqlite's API address}"
+        ricardocardn/metadata-datamart-builder
+```
+
+<h3><b>Query Engine</b></h3>
 ```
 docker run -p 8080:8080 --network host susanasrez/queryengine
 ```
 
-Other modules, Crawler and CLeaner, are already running on the server which ip is specified on the dockerfiles among the project, but could be refactored to execute it locally. If so, take a look at the docker compose file, and make sure that both modules are running in the same computer. Make also sure that active mq is running before starting the app.
+<h3><b>User Service</b></h3>
+
+The user service will be connected to both Hazelcast and MongoDB datamarts, so make sure to use the ```--network=host``` and you have a MongoDB Atlas account. So:
+```
+docker run -p 8082:8080
+              -e ""MONGO_ATLAS_PASSWORD={your password}"
+              -e "SERVER_API_URL=http://{server's IP}"
+          ricardocardn/user-service
+```
+
+
 
 <br>
 <h2>Credits</h2>
