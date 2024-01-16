@@ -62,9 +62,21 @@ docker run -p 8080:8080 --network host susanasrez/queryengine
 The user service will be connected to both Hazelcast and MongoDB datamarts, so make sure to use the ```--network=host``` and you have a MongoDB Atlas account. So:
 ```
 docker run -p 8082:8080
-              -e ""MONGO_ATLAS_PASSWORD={your password}"
-              -e "SERVER_API_URL=http://{server's IP}"
+            -e ""MONGO_ATLAS_PASSWORD={your password}"
+            -e "SERVER_API_URL=http://{server's IP}"
           ricardocardn/user-service
+```
+
+<h3><b>Local API Gateway</b></h3>
+
+Local API Gateway will be used so that computers in the cluster will be able to deploy several services. Thus, when routing with the load balancer, each user petition can be attended by any computer.
+
+```
+docker run -p 8080:8080
+            -e "USER_SERVICE_API=http://localhost:{local user service's port}"
+            -e "QUERY_ENGINE_SERVICE_API=http://localhost:{query engine service's port}"
+            -e "CLEANER_SERVICE_API=http://{server's ip}:{cleaner's port}"
+          ricardocardn/local-api-gateway
 ```
 
 
