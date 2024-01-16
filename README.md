@@ -53,6 +53,7 @@ docker run -e "SERVER_MQ_PORT={port}"
 ```
 
 <h3><b>Query Engine</b></h3>
+
 ```
 docker run -p 8080:8080 --network host susanasrez/queryengine
 ```
