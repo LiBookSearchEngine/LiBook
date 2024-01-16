@@ -21,11 +21,12 @@ public class Controller {
 
     public void run() throws JMSException, IOException {
         EventConsumer cleanerEvents = new EventConsumer(Main.SERVER_MQ_PORT,
-                "cleanerMetadataEvents",
+                "cleanerEvents",
                 Main.SERVER_API_URL);
 
         while (true) {
             String book = cleanerEvents.getMessage();
+            System.out.println(book);
             Path bookPath = Path.of(book);
             String bookId = bookPath.getFileName().toString().split(".txt")[0];
             MetadataBook metadata = client.getMetadata(bookId);
