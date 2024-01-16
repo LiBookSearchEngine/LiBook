@@ -54,8 +54,12 @@ docker run -e "SERVER_MQ_PORT={port}"
 
 <h3><b>Query Engine</b></h3>
 
+Query engine will make use of both Hazelcast and Rqlite, so we should run its images as follows:
+
 ```
-docker run -p 8080:8080 --network host susanasrez/queryengine
+docker run -p 8080:8080 --network host
+            -e "LOCAL_MDB_API=http://{rqlite's API address}"
+         susanasrez/queryengine
 ```
 
 <h3><b>User Service</b></h3>
