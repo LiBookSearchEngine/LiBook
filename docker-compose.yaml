@@ -44,7 +44,16 @@ services:
   user-service:
     image: ricardocardn/user-service
     ports:
-      - "80:8082"
+      - "8082:8082"
     environment:
-      - "MONGO_ATLAS_PASSWORD=qy28sOK9uQhRJ3XT"
+      - "MONGO_ATLAS_PASSWORD="
       - "SERVER_API_URL=http://localhost"
+
+  api-gateway:
+    image: ricardocardn/api-gateway
+    ports:
+      - "80:80"
+    environment:
+      - "USER_SERVICE_API=http://user-service:8082/"
+      - "CLEANER_SERVICE_API=http://cleaner:8080/"
+      - "USER_BOOKS_SERVICE_API=http://user-books-processor:8081/"
