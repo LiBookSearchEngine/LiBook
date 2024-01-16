@@ -21,7 +21,7 @@ public class Controller {
 
     public void run() throws JMSException, IOException {
         EventConsumer cleanerEvents = new EventConsumer(Main.SERVER_MQ_PORT,
-                "cleanerEvents",
+                "cleanerMetadataEvents",
                 Main.SERVER_API_URL);
 
         while (true) {
