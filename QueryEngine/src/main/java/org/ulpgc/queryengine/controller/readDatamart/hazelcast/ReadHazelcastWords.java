@@ -12,9 +12,10 @@ import org.ulpgc.queryengine.model.WordDocuments;
 import org.ulpgc.queryengine.model.WordFrequency;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ReadHazelcastWords implements DatamartReaderFiles {
     private final IMap<String, List<String>> hazelcastMap;
@@ -62,31 +63,23 @@ public class ReadHazelcastWords implements DatamartReaderFiles {
     @Override
     public List<RecommendBook> getRecommendBook(String phrase) {
         List<WordDocuments> wordDocumentsList = getDocumentsWord(phrase);
-        Map<String, Integer> idCountMap = new HashMap<>();
-        Map<String, String> idTitleMap = new HashMap<>();
 
-        for (WordDocuments wordDocuments : wordDocumentsList) {
-            for (String id : wordDocuments.documentsId()) {
-                idCountMap.put(id, idCountMap.getOrDefault(id, 0) + 1);
-                String title = getTitleForId(id);
-                idTitleMap.put(id, title);
-            }
-        }
+        Map<String, Long> idCountMap = wordDocumentsList.stream()
+                .flatMap(wordDocuments -> wordDocuments.documentsId().stream())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        int maxCount = 0;
-        List<RecommendBook> mostRecommendedBooks = new ArrayList<>();
+        long maxCount = idCountMap.values().stream()
+                .max(Long::compare)
+                .orElse(0L);
 
-        for (Map.Entry<String, Integer> entry : idCountMap.entrySet()) {
-            if (entry.getValue() > maxCount) {
-                maxCount = entry.getValue();
-                mostRecommendedBooks.clear();
-                mostRecommendedBooks.add(new RecommendBook(idTitleMap.get(entry.getKey()), entry.getKey()));
-            } else if (entry.getValue() == maxCount) {
-                mostRecommendedBooks.add(new RecommendBook(idTitleMap.get(entry.getKey()), entry.getKey()));
-            }
-        }
+        List<String> mostRecommendedBooks = idCountMap.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxCount)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
 
-        return mostRecommendedBooks;
+        return mostRecommendedBooks.stream()
+                .map(id -> new RecommendBook(getTitleForId(id), id))
+                .collect(Collectors.toList());
     }
 
     @Override

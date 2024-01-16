@@ -7,10 +7,12 @@ import org.ulpgc.queryengine.controller.readDatamart.DatamartReaderFiles;
 import org.ulpgc.queryengine.controller.readDatamart.google.cloud.ReadCloud;
 import org.ulpgc.queryengine.controller.readDatamart.hazelcast.ReadHazelcastStats;
 import org.ulpgc.queryengine.controller.readDatamart.hazelcast.ReadHazelcastWords;
+import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteQuery;
 import org.ulpgc.queryengine.model.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static spark.Spark.*;
 import static spark.Spark.port;
@@ -20,12 +22,14 @@ public class API {
     private static ReadHazelcastWords readHazelcastWords;
     private static ReadHazelcastStats readHazelcastStats;
     private static CleanerAPIClient cleanerAPIClient;
+    private static RqliteQuery rqliteQuery;
 
     public static void runAPI(DatamartReaderFiles obtainFiles, DatamartCalculateStats obtainStats, int port, CleanerAPIClient client) throws IOException {
         readHazelcastWords = (ReadHazelcastWords) obtainFiles;
         readHazelcastStats = (ReadHazelcastStats) obtainStats;
         ReadCloud.obtain_credentials();
         cleanerAPIClient = client;
+        rqliteQuery = new RqliteQuery();
         port(port);
         getTotalWords();
         getLen();
@@ -36,6 +40,8 @@ public class API {
         getMetadata();
         getRawBook();
         getContent();
+        getByAuthor();
+        getByLanguage();
     }
 
     public static void getTotalWords(){
@@ -104,6 +110,21 @@ public class API {
         });
     }
 
+    private static void getByAuthor(){
+        get("/metadata/author/:author", (req, res) -> {
+            String author = req.params(":author");
+            Map<String, MetadataBook> books = rqliteQuery.selectByAuthor(author);
+            return new Gson().toJson(books);
+        });
+    }
+
+    private static void getByLanguage(){
+        get("/metadata/language/:language", (req, res) -> {
+            String author = req.params(":language");
+            Map<String, MetadataBook> books = rqliteQuery.selectByLanguage(author);
+            return new Gson().toJson(books);
+        });
+    }
 
 
 }
