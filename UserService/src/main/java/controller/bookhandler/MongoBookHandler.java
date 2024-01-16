@@ -1,7 +1,7 @@
 package controller.bookhandler;
 
 import com.mongodb.client.model.Filters;
-import controller.connections.MongoConnection;
+import org.libook.connections.MongoConnection;
 import controller.http.connections.ConnectionHandler;
 import controller.http.connections.HTTPConnectionHandler;
 import model.Book;

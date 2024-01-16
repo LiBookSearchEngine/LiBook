@@ -1,7 +1,7 @@
-package api;
+package org.libook.api;
 
 import com.google.gson.Gson;
-import controller.connections.MongoConnection;
+import org.libook.connections.MongoConnection;
 import controller.bookhandler.DatamartBookHandler;
 import controller.bookhandler.MongoBookHandler;
 import controller.loggers.MongoUserLogger;

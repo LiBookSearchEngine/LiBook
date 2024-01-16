@@ -1,7 +1,7 @@
 package controller.loaders;
 
 import com.mongodb.client.model.Filters;
-import controller.connections.MongoConnection;
+import org.libook.connections.MongoConnection;
 import model.User;
 import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;

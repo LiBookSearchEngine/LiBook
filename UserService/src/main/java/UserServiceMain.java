@@ -1,5 +1,4 @@
-import api.APIController;
-import controller.sessions.SessionHandler;
+import org.libook.api.APIController;
 import controller.sessions.cookie.SessionHazelcastHandler;
 
 import javax.jms.JMSException;

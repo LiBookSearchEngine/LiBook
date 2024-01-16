@@ -1,4 +1,4 @@
-package controller.connections;
+package org.libook.connections;
 
 import spark.Request;
 import spark.Response;

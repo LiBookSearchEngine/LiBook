@@ -1,7 +1,7 @@
-package api;
+package org.libook.api;
 
-import controller.connections.ConnectionHandler;
-import controller.connections.HTTPConnectionHandler;
+import org.libook.connections.ConnectionHandler;
+import org.libook.connections.HTTPConnectionHandler;
 
 import static spark.Spark.*;
 
@@ -15,7 +15,6 @@ public class UserAPIController {
     }
 
     public void run() {
-        port(80);
         handleUserAPI();
     }
 

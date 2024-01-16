@@ -1,4 +1,4 @@
-package controller.connections;
+package org.libook.connections;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

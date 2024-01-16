@@ -1,9 +1,8 @@
 package controller.loggers;
 
-import controller.connections.MongoConnection;
+import org.libook.connections.MongoConnection;
 import controller.loaders.MongoUserLoader;
 import controller.loaders.UserLoader;
-import controller.sessions.cookie.SessionHazelcastHandler;
 import controller.sessions.SessionHandler;
 import model.User;
 import org.bson.Document;
