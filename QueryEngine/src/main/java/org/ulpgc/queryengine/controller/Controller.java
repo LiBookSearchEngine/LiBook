@@ -4,8 +4,6 @@ import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import org.ulpgc.queryengine.controller.readDatalake.CleanerAPIClient;
-import org.ulpgc.queryengine.controller.readDatamart.DatamartCalculateStats;
-import org.ulpgc.queryengine.controller.readDatamart.DatamartReaderFiles;
 import org.ulpgc.queryengine.controller.readDatamart.hazelcast.ReadHazelcastStats;
 import org.ulpgc.queryengine.controller.readDatamart.hazelcast.ReadHazelcastWords;
 import org.ulpgc.queryengine.view.API;
@@ -17,8 +15,8 @@ public class Controller {
     public Controller(String ip, int port) throws IOException {
         CleanerAPIClient cleanerAPIClient = new CleanerAPIClient(ip);
         HazelcastInstance hazelcastInstance = initializeHaZelcast();
-        DatamartReaderFiles readDatamartFiles= new ReadHazelcastWords(hazelcastInstance, cleanerAPIClient);
-        DatamartCalculateStats readDatamartStats = new ReadHazelcastStats(hazelcastInstance);
+        ReadHazelcastWords readDatamartFiles= new ReadHazelcastWords(hazelcastInstance, cleanerAPIClient);
+        ReadHazelcastStats readDatamartStats = new ReadHazelcastStats(hazelcastInstance);
         API.runAPI(readDatamartFiles, readDatamartStats, port, cleanerAPIClient);
 
     }
@@ -28,4 +26,5 @@ public class Controller {
         config.setInstanceName("instance");
         return Hazelcast.newHazelcastInstance(config);
     }
+
 }

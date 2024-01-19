@@ -39,6 +39,17 @@ public class RqliteQuery implements DatabaseQuery {
         return obtainInformation(values);
     }
 
+    public Map<String, MetadataBook> selectById(String id) {
+        String query = String.format(
+                "SELECT * FROM book_metadata WHERE id='%s'",
+                id
+        );
+
+        StringBuilder queryResult = this.requestMaker.make("query", query);
+        List<List<String>> values = findValues(queryResult.toString());
+        return obtainInformation(values);
+    }
+
     private static List<List<String>> findValues(String query){
         List<List<String>> values = new ArrayList<>();
 

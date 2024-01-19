@@ -24,9 +24,9 @@ public class API {
     private static CleanerAPIClient cleanerAPIClient;
     private static RqliteQuery rqliteQuery;
 
-    public static void runAPI(DatamartReaderFiles obtainFiles, DatamartCalculateStats obtainStats, int port, CleanerAPIClient client) throws IOException {
-        readHazelcastWords = (ReadHazelcastWords) obtainFiles;
-        readHazelcastStats = (ReadHazelcastStats) obtainStats;
+    public static void runAPI(ReadHazelcastWords obtainFiles, ReadHazelcastStats obtainStats, int port, CleanerAPIClient client) throws IOException {
+        readHazelcastWords = obtainFiles;
+        readHazelcastStats = obtainStats;
         ReadCloud.obtain_credentials();
         cleanerAPIClient = client;
         rqliteQuery = new RqliteQuery();
@@ -58,7 +58,7 @@ public class API {
     private static void getWordDocuments() {
         get("/datamart/:word", (req, res) -> {
             String word = req.params("word");
-            List<WordDocuments> documents = readHazelcastWords.getDocumentsWord(word);
+            List<Object> documents = readHazelcastWords.getWord(word);
             return (new Gson()).toJson(documents);
         });
     }
@@ -74,7 +74,7 @@ public class API {
     private static void getRecommendBook(){
         get("datamart-recommend/:phrase", (req, res) -> {
             String phrase = req.params("phrase");
-            List<RecommendBook> book = readHazelcastWords.getRecommendBook(phrase);
+            List<Object> book = readHazelcastWords.getRecommendBook(phrase);
             return (new Gson()).toJson(book);
         });
     }

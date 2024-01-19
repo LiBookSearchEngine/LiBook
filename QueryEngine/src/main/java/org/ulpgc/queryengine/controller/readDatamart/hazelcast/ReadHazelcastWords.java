@@ -6,29 +6,45 @@ import org.ulpgc.queryengine.controller.exceptions.ObjectNotFoundException;
 import org.ulpgc.queryengine.controller.readDatalake.CleanerAPIClient;
 import org.ulpgc.queryengine.controller.readDatamart.DatamartReaderFiles;
 import org.ulpgc.queryengine.controller.readDatamart.google.cloud.ReadGoogleCloudObjects;
+import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteQuery;
 import org.ulpgc.queryengine.model.MetadataBook;
 import org.ulpgc.queryengine.model.RecommendBook;
 import org.ulpgc.queryengine.model.WordDocuments;
 import org.ulpgc.queryengine.model.WordFrequency;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class ReadHazelcastWords implements DatamartReaderFiles {
+public class ReadHazelcastWords {
     private final IMap<String, List<String>> hazelcastMap;
     private final ReadGoogleCloudObjects readGoogleCloudObjects;
     private static CleanerAPIClient cleanerAPIClient;
 
     public ReadHazelcastWords(HazelcastInstance hazelcastInstance, CleanerAPIClient client){
         this.hazelcastMap = hazelcastInstance.getMap("datamart");
+        List<String> xd = new ArrayList<>();
+        xd.add("1");
+        xd.add("2");
+        xd.add("3");
+        xd.add("4");
+        xd.add("5");
+        xd.add("6");
+        xd.add("7");
+        xd.add("8");
+        hazelcastMap.put("hola", xd);
+        List<String> xd2 = new ArrayList<>();
+        xd2.add("1");
+        xd2.add("2");
+        hazelcastMap.put("adios", xd2);
+
         this.cleanerAPIClient = client;
         this.readGoogleCloudObjects = new ReadGoogleCloudObjects(client);
     }
 
-    @Override
     public List<String> get_documents(String word) {
         word = word.toLowerCase();
         List<String> documents = hazelcastMap.get(word);
@@ -45,7 +61,6 @@ public class ReadHazelcastWords implements DatamartReaderFiles {
         return documents;
     }
 
-    @Override
     public List<WordDocuments> getDocumentsWord(String param) {
         List<WordDocuments> documents = new ArrayList<>();
 
@@ -60,8 +75,7 @@ public class ReadHazelcastWords implements DatamartReaderFiles {
         return documents;
     }
 
-    @Override
-    public List<RecommendBook> getRecommendBook(String phrase) {
+    public List<Object> getRecommendBook(String phrase) {
         List<WordDocuments> wordDocumentsList = getDocumentsWord(phrase);
 
         Map<String, Long> idCountMap = wordDocumentsList.stream()
@@ -77,12 +91,28 @@ public class ReadHazelcastWords implements DatamartReaderFiles {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        return mostRecommendedBooks.stream()
-                .map(id -> new RecommendBook(getTitleForId(id), id))
-                .collect(Collectors.toList());
+        List<Object> recommendBooks = new ArrayList<>();
+
+        for (String id : mostRecommendedBooks) {
+            Map<String, MetadataBook> metadataBookMap = getTitleForId(id);
+            recommendBooks.add(metadataBookMap);
+        }
+
+        return recommendBooks;
     }
 
-    @Override
+    public List<Object> getWord(String word){
+        List<WordDocuments> wordDocumentsList = getDocumentsWord(word);
+        List<String> idBook = wordDocumentsList.get(0).documentsId();
+        List<Object> recommendBooks = new ArrayList<>();
+        for(String id: idBook){
+            Map<String, MetadataBook> metadataBookMap = getTitleForId(id);
+            recommendBooks.add(metadataBookMap);
+        }
+
+        return recommendBooks;
+    }
+
     public WordFrequency getFrequency(String word) {
         List<WordDocuments> wordDocumentsList = getDocumentsWord(word);
 
@@ -94,14 +124,8 @@ public class ReadHazelcastWords implements DatamartReaderFiles {
         return new WordFrequency(word, frequency);
     }
 
-    private static String getTitleForId(String id) {
-        try {
-            String name = id.substring(0, id.length() - 4);
-            MetadataBook metadataBook = cleanerAPIClient.getMetadata(name);
-            return metadataBook.title();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Title not found";
-        }
+    private static Map<String, MetadataBook> getTitleForId(String id) {
+        RqliteQuery rqliteQuery = new RqliteQuery();
+        return rqliteQuery.selectById(id);
     }
 }

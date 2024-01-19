@@ -71,16 +71,6 @@ public class ReadDatamartFiles implements DatamartReaderFiles {
         int maxCount = 0;
         List<RecommendBook> mostRecommendedBooks = new ArrayList<>();
 
-        for (Map.Entry<Object, Integer> entry : idCountMap.entrySet()) {
-            if (entry.getValue() > maxCount) {
-                maxCount = entry.getValue();
-                mostRecommendedBooks.clear();
-                mostRecommendedBooks.add(new RecommendBook(idTitleMap.get(entry.getKey()), entry.getKey()));
-            } else if (entry.getValue() == maxCount) {
-                mostRecommendedBooks.add(new RecommendBook(idTitleMap.get(entry.getKey()), entry.getKey()));
-            }
-        }
-
         return mostRecommendedBooks;
     }
 

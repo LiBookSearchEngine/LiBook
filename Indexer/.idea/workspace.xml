@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b966b100-3655-4bf2-9b40-4b56d3228ec6" name="Changes" comment="Indexer Generalization for Indexing Previous Processed Content">
-      <change beforePath="$PROJECT_DIR$/../DataLoader/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLoader/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/API.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/indexers/InvertedIndexHazelCastWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/indexers/InvertedIndexHazelCastWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/readMetadata/readrqlite/RqliteRequestMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/readMetadata/readrqlite/RqliteRequestMaker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +57,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Crawler" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/Susana/Desktop/Universidad/Tercero/Primer/BD/LiBook/Indexer"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.ulpgc.indexer.controller.processes.writers" />
@@ -72,7 +71,7 @@
     <configuration name="Indexer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.ulpgc.indexer.Main" />
       <module name="Indexer" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;&quot;C:\Users\carde\Desktop\DocumentsRepository&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\Users\carde\Desktop\DocumentsRepository&quot; 1" />
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
         <option name="region" />
