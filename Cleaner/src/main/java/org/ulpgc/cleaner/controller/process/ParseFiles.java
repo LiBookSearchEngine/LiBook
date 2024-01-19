@@ -20,7 +20,7 @@ public class ParseFiles {
     }
 
     public static String renameFile(String filename) {
-        Pattern pattern = Pattern.compile("(\\d+).txt");
+        Pattern pattern = Pattern.compile("(\\w+).txt");
         Matcher matcher = pattern.matcher(filename);
 
         if (matcher.find()) {

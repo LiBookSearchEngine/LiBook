@@ -23,13 +23,12 @@ public class Writer {
 
     public void writeToDatalake(String text, String idBook){
         try {
-            String newName = ParseFiles.renameFile(idBook);
-            FileWriter fileWriter = new FileWriter(pathContent + "/" + newName + ".txt");
+            FileWriter fileWriter = new FileWriter(pathContent + "/" + idBook);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             writer.write(text);
             writer.close();
             fileWriter.close();
-            System.out.println("Saved the book " + idBook);
+            System.out.println("Saved the book " + idBook + " at " + pathContent + "/" + idBook);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -38,8 +37,7 @@ public class Writer {
 
     public void writeMetadataToDatalake(String text, String idBook){
         try {
-            String newName = ParseFiles.renameFile(idBook);
-            FileWriter fileWriter = new FileWriter((pathMetadata +  "/" + newName + ".metadata"), true);
+            FileWriter fileWriter = new FileWriter((pathMetadata +  "/" + getName(idBook) + ".metadata"), true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             writer.write(text);
             writer.close();
@@ -53,9 +51,8 @@ public class Writer {
     public void writeEvent(String idBook){
         FileWriter file = null;
         try {
-            String newName = ParseFiles.renameFile(idBook);
-            file = new FileWriter(pathEvent +  "/" + newName + ".event" );
-            WriteEvent event = new WriteEvent(new Date(), newName);
+            file = new FileWriter(pathEvent +  "/" + getName(idBook) + ".event" );
+            WriteEvent event = new WriteEvent(new Date(), idBook);
             BufferedWriter writer = new BufferedWriter(file);
             writer.write((new Gson()).toJson(event));
 
@@ -64,5 +61,9 @@ public class Writer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getName(String idBook) {
+        return idBook.split(".txt")[0];
     }
 }

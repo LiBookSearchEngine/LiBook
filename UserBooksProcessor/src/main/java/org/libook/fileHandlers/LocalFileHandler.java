@@ -22,7 +22,7 @@ public class LocalFileHandler implements FileHandler{
     @Override
     public void saveDocument(Document bookDocument, int bookID) throws IOException {
         createFile(bookDocument.text(), String.valueOf(bookID));
-        publishFileAddition(String.valueOf(bookID));
+        publishFileAddition("Content/String.valueOf(bookID)");
     }
 
     @Override
