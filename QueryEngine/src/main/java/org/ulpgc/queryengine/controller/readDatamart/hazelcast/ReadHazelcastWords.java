@@ -4,16 +4,13 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.ulpgc.queryengine.controller.exceptions.ObjectNotFoundException;
 import org.ulpgc.queryengine.controller.readDatalake.CleanerAPIClient;
-import org.ulpgc.queryengine.controller.readDatamart.DatamartReaderFiles;
 import org.ulpgc.queryengine.controller.readDatamart.google.cloud.ReadGoogleCloudObjects;
 import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteQuery;
 import org.ulpgc.queryengine.model.MetadataBook;
-import org.ulpgc.queryengine.model.RecommendBook;
 import org.ulpgc.queryengine.model.WordDocuments;
 import org.ulpgc.queryengine.model.WordFrequency;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -26,21 +23,6 @@ public class ReadHazelcastWords {
 
     public ReadHazelcastWords(HazelcastInstance hazelcastInstance, CleanerAPIClient client){
         this.hazelcastMap = hazelcastInstance.getMap("datamart");
-        List<String> xd = new ArrayList<>();
-        xd.add("1");
-        xd.add("2");
-        xd.add("3");
-        xd.add("4");
-        xd.add("5");
-        xd.add("6");
-        xd.add("7");
-        xd.add("8");
-        hazelcastMap.put("hola", xd);
-        List<String> xd2 = new ArrayList<>();
-        xd2.add("1");
-        xd2.add("2");
-        hazelcastMap.put("adios", xd2);
-
         this.cleanerAPIClient = client;
         this.readGoogleCloudObjects = new ReadGoogleCloudObjects(client);
     }

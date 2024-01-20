@@ -15,4 +15,3 @@ RUN mvn clean package
 CMD ["java", "-jar", "target/queryengine.jar", "http://34.16.163.134","8080"]
 
 EXPOSE 8080
-EXPOSE 4003
