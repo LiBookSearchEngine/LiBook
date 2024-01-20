@@ -34,7 +34,6 @@ public class EventConsumer implements Consumer {
                 }
             }
         } catch (JMSException e) {
-            e.printStackTrace();
         }
 
 

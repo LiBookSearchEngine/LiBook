@@ -11,7 +11,8 @@ public class GutenbergTask extends TimerTask {
     @Override
     public void run() {
         try {
-            handleAllBooks(10);
+            int amountOfBooks = Integer.parseInt(System.getenv("AMOUNT_PER_HOUR"));
+            handleAllBooks(amountOfBooks);
         } catch (Exception e) {
             e.printStackTrace();
         }

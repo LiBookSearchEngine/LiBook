@@ -1,5 +1,7 @@
+package org.libook;
+
 import org.libook.api.APIController;
-import controller.sessions.cookie.SessionHazelcastHandler;
+import org.libook.controller.sessions.cookie.SessionHazelcastHandler;
 
 import javax.jms.JMSException;
 

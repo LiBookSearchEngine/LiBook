@@ -1,6 +1,6 @@
-package controller.loaders;
+package org.libook.controller.loaders;
 
-import model.User;
+import org.libook.model.User;
 
 public interface UserLoader {
     User getUser(String user, String Password);

@@ -13,6 +13,7 @@ public class InvertedIndexHazelCastWriter implements InvertedIndexWriter {
     public InvertedIndexHazelCastWriter() {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
         invertedIndex = hazelcastInstance.getMultiMap("invertedIndex");
+
     }
 
     @Override

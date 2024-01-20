@@ -1,4 +1,4 @@
-package model;
+package org.libook.model;
 
 public class Book {
     private String name;

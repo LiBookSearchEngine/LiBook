@@ -15,7 +15,7 @@ public class RqliteDMLHandler implements DatabaseDMLHandler {
     @Override
     public void createBooksTable() {
         String createTableQuery = "CREATE TABLE book_metadata ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "id TEXT PRIMARY KEY,"
                 + "title TEXT,"
                 + "author TEXT,"
                 + "language TEXT,"
@@ -27,7 +27,8 @@ public class RqliteDMLHandler implements DatabaseDMLHandler {
     public void insertMetadata(MetadataBook book) {
         this.book = book;
         String insertDataQuery = String.format(
-                "INSERT INTO book_metadata (title, author, language, date) VALUES ('%s', '%s', '%s', '%s')",
+                "INSERT INTO book_metadata (id, title, author, language, date) VALUES ('%s', '%s', '%s', '%s', '%s')",
+                book.id(),
                 book.title(),
                 book.author(),
                 book.language(),

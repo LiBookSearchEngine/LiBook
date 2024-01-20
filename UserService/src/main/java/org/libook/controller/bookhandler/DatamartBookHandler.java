@@ -1,8 +1,8 @@
-package controller.bookhandler;
+package org.libook.controller.bookhandler;
 
-import model.Book;
-import model.BookInfo;
-import model.User;
+import org.libook.model.Book;
+import org.libook.model.BookInfo;
+import org.libook.model.User;
 
 import java.util.List;
 

@@ -1,11 +1,10 @@
 package libook.controller.http.clients;
 
-import libook.Main;
+import libook.MetadataBuilderMain;
 import libook.controller.extractors.MetadataExtractor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import libook.model.Book;
 import libook.model.MetadataBook;
 
 import java.io.IOException;
@@ -17,18 +16,18 @@ public class CleanerAPIClient {
     private static String cleanerBaseUrl;
 
     public CleanerAPIClient(){
-        this.ip = Main.SERVER_API_URL;
+        this.ip = MetadataBuilderMain.SERVER_API_URL;
         baseUrl();
     }
 
     public void baseUrl(){
-        cleanerBaseUrl = ip + ":" + Main.SERVER_CLEANER_PORT + "/datalake";
+        cleanerBaseUrl = ip + ":" + MetadataBuilderMain.SERVER_CLEANER_PORT + "/datalake";
     }
 
     public MetadataBook getMetadata(String idBook) throws IOException {
         String url = cleanerBaseUrl + "/metadata/" + idBook;
         String text = executeRequest(url);
-        return MetadataExtractor.extractMetadata(text);
+        return MetadataExtractor.extractMetadata(idBook, text);
     }
 
     private String executeRequest(String url) throws IOException {

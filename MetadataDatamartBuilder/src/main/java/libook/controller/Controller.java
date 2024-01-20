@@ -1,13 +1,12 @@
 package libook.controller;
 
-import libook.Main;
+import libook.MetadataBuilderMain;
 import libook.controller.database.DatabaseDMLHandler;
 import libook.controller.http.clients.CleanerAPIClient;
 import libook.controller.message.EventConsumer;
 import libook.model.MetadataBook;
+import org.jetbrains.annotations.NotNull;
 
-import javax.jms.JMSException;
-import java.io.IOException;
 import java.nio.file.Path;
 
 public class Controller {
@@ -19,18 +18,36 @@ public class Controller {
         this.dmlHandler = dmlHandler;
     }
 
-    public void run() throws JMSException, IOException {
-        EventConsumer cleanerEvents = new EventConsumer(Main.SERVER_MQ_PORT,
-                "cleanerMetadataEvents",
-                Main.SERVER_API_URL);
+    public void run() {
+        EventConsumer cleanerEvents = getCleanerMetadataEvents();
 
         while (true) {
             String book = cleanerEvents.getMessage();
-            System.out.println(book);
-            Path bookPath = Path.of(book);
-            String bookId = bookPath.getFileName().toString().split(".txt")[0];
-            MetadataBook metadata = client.getMetadata(bookId);
-            dmlHandler.insertMetadata(metadata);
+            try {
+                Path bookPath = Path.of(book);
+                String bookId = bookPath.getFileName().toString().split(".txt")[0];
+                MetadataBook metadata = client.getMetadata(bookId);
+                dmlHandler.insertMetadata(metadata);
+                System.out.println("Inserted book " + book + " to metadata datamart");
+            } catch (Exception e) {
+                if (book != null)
+                    System.out.println("Error found when storing " + book + " metadata");
+
+                cleanerEvents = getCleanerMetadataEvents();
+            }
+        }
+    }
+
+    @NotNull
+    private EventConsumer getCleanerMetadataEvents() {
+        try {
+            Thread.sleep(5000);
+            return new EventConsumer(MetadataBuilderMain.SERVER_MQ_PORT,
+                    "cleanerMetadataEvents",
+                    MetadataBuilderMain.SERVER_API_URL);
+
+        } catch (Exception e) {
+            return getCleanerMetadataEvents();
         }
     }
 }

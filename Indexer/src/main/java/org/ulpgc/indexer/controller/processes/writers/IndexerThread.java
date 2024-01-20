@@ -15,18 +15,21 @@ import java.util.Set;
 
 public class IndexerThread extends Thread {
     private final String contentPath;
-    private final EventConsumer eventConsumer;
+    private EventConsumer eventConsumer;
     private final InvertedIndexWriter invertedIndexWriter;
+    private final String indexerId;
+    private final String apiURL;
 
-    public IndexerThread(String contentPath, String credentialsJson, String apiURL, String indexerId) throws JMSException {
+    public IndexerThread(String contentPath, String credentialsJson, String apiURL, String indexerId) {
         this.contentPath = contentPath;
         this.invertedIndexWriter = new InvertedIndexHazelCastWriter();
-        this.eventConsumer = new EventConsumer(Integer.toString(Main.SERVER_MQ_PORT), "readEvents" + indexerId, apiURL);
+        this.indexerId = indexerId;
+        this.apiURL = apiURL;
+        this.eventConsumer = getCleanerConsumer();
     }
 
     public void run() {
         while (true) {
-            System.out.println();
             String file = eventConsumer.getMessage();
             try {
                 System.out.println("Indexing file " + file);
@@ -34,11 +37,21 @@ public class IndexerThread extends Thread {
                 System.out.println("File " + file + " indexed");
 
                 Main.INDEXED_BOOKS += 1;
-                Thread.sleep(1);
 
             } catch (Exception e) {
-                e.printStackTrace();
+                eventConsumer = getCleanerConsumer();
             }
+        }
+    }
+
+    private EventConsumer getCleanerConsumer() {
+        try {
+            Thread.sleep(5000);
+            return new EventConsumer(Integer.toString(Main.SERVER_MQ_PORT), "readEvents" + indexerId, apiURL);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getCleanerConsumer();
         }
     }
 

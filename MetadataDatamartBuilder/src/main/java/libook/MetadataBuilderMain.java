@@ -8,11 +8,11 @@ import libook.controller.database.rqlite.RqliteRequestMaker;
 import javax.jms.JMSException;
 import java.io.IOException;
 
-public class Main {
-    public static String SERVER_MQ_PORT = "443";
-    public static String SERVER_API_URL = "http://34.125.120.252";
-    public static String SERVER_CLEANER_PORT = "8080";
-    public static String LOCAL_MDB_API = "http://localhost";
+public class MetadataBuilderMain {
+    public static String SERVER_MQ_PORT = System.getenv("SERVER_MQ_PORT");
+    public static String SERVER_API_URL = System.getenv("SERVER_API_URL");
+    public static String SERVER_CLEANER_PORT = System.getenv("SERVER_CLEANER_PORT");
+    public static String LOCAL_MDB_API = System.getenv("LOCAL_MDB_API");
 
     public static void main(String[] args) throws JMSException, IOException {
         initializeDatabase();

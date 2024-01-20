@@ -11,7 +11,7 @@ COPY src /app/src
 # Build the project
 RUN mvn clean package
 
-CMD ["java", "-jar", "target/indexer.jar"]
+CMD ["java", "-jar", "target/metadata-datamart-builder.jar"]
 
 #
 EXPOSE 8080

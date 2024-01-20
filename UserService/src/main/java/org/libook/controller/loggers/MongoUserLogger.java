@@ -1,10 +1,10 @@
-package controller.loggers;
+package org.libook.controller.loggers;
 
-import org.libook.connections.MongoConnection;
-import controller.loaders.MongoUserLoader;
-import controller.loaders.UserLoader;
-import controller.sessions.SessionHandler;
-import model.User;
+import org.libook.controller.connections.MongoConnection;
+import org.libook.controller.loaders.MongoUserLoader;
+import org.libook.controller.loaders.UserLoader;
+import org.libook.controller.sessions.SessionHandler;
+import org.libook.model.User;
 import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
 
