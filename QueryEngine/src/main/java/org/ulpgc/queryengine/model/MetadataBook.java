@@ -1,14 +1,12 @@
 package org.ulpgc.queryengine.model;
 
-import java.util.Date;
-
 public class MetadataBook {
     private final String title;
     private final String author;
-    private final Date releaseDate;
+    private final String releaseDate;
     private final String language;
 
-    public MetadataBook(String title, String author, Date releaseDate, String language) {
+    public MetadataBook(String title, String author, String releaseDate, String language) {
         this.title = title;
         this.author = author;
         this.releaseDate = releaseDate;
@@ -23,7 +21,7 @@ public class MetadataBook {
         return author;
     }
 
-    public Date releaseDate() {
+    public String releaseDate() {
         return releaseDate;
     }
 

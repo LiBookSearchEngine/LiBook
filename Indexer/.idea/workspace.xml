@@ -5,55 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b966b100-3655-4bf2-9b40-4b56d3228ec6" name="Changes" comment="Indexer Generalization for Indexing Previous Processed Content">
-      <change afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/Consumer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/FileProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/FileProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/Publisher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/writer/Writer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cleaner/target/classes/org/ulpgc/cleaner/controller/writer/Writer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Cleaner/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cleaner/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../Cleaner/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Crawler/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Crawler/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Crawler/src/main/java/org/crawler/schedulerTasks/GutenbergTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Crawler/src/main/java/org/crawler/schedulerTasks/GutenbergTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Crawler/target/classes/org/crawler/schedulerTasks/GutenbergTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Crawler/target/classes/org/crawler/schedulerTasks/GutenbergTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/indexers/InvertedIndexHazelCastWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/indexers/InvertedIndexHazelCastWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/processes/readers/AsynchronousReaderThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/processes/readers/AsynchronousReaderThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/processes/writers/IndexerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ulpgc/indexer/controller/processes/writers/IndexerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/controller/processes/readers/AsynchronousReaderThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/controller/processes/readers/AsynchronousReaderThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/controller/processes/writers/IndexerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/ulpgc/indexer/controller/processes/writers/IndexerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/MetadataBuilderMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/database/rqlite/RqliteDMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/database/rqlite/RqliteDMLHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/database/rqlite/RqliteRequestMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/database/rqlite/RqliteRequestMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/extractors/MetadataExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/extractors/MetadataExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/http/clients/CleanerAPIClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/http/clients/CleanerAPIClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/message/EventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/controller/message/EventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/model/MetadataBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MetadataDatamartBuilder/src/main/java/libook/model/MetadataBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QueryEngine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/UserServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/UserServiceMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/bookhandler/DatamartBookHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/bookhandler/DatamartBookHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/bookhandler/MongoBookHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/bookhandler/MongoBookHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/http/connections/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/http/connections/ConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/http/connections/HTTPConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/http/connections/HTTPConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/loaders/MongoUserLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/loaders/MongoUserLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/loaders/UserLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/loaders/UserLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/loggers/MongoUserLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/loggers/MongoUserLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/loggers/UserLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/loggers/UserLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/registers/MongoUserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/registers/MongoUserRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/registers/UserRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/registers/UserRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/sessions/SessionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/sessions/SessionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/controller/sessions/cookie/SessionHazelcastHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/sessions/cookie/SessionHazelcastHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/model/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/model/BookInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/model/BookInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/api/APIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/api/APIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/connections/MongoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/org/libook/controller/connections/MongoConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/readMetadata/readrqlite/RqliteRequestMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QueryEngine/src/main/java/org/ulpgc/queryengine/controller/readMetadata/readrqlite/RqliteRequestMaker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,13 +57,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/Susana/Desktop/Universidad/Tercero/Primer/BD/LiBook/Indexer"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.ulpgc.indexer.controller.processes.writers" />
@@ -114,14 +69,9 @@
   </component>
   <component name="RunManager">
     <configuration name="Indexer" type="Application" factoryName="Application">
-      <envs>
-        <env name="SERVER_API_URL" value="http://34.125.120.252" />
-        <env name="SERVER_MQ_PORT" value="443" />
-        <env name="index" value="1" />
-      </envs>
       <option name="MAIN_CLASS_NAME" value="org.ulpgc.indexer.Main" />
       <module name="Indexer" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;&quot;C:\Users\carde\Desktop\DocumentsRepository&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\Users\carde\Desktop\DocumentsRepository&quot; 1" />
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
         <option name="region" />

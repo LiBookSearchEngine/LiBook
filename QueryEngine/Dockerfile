@@ -8,14 +8,11 @@ WORKDIR /app
 COPY pom.xml /app
 COPY src /app/src
 
-# Define a volume to mount the host directory
-VOLUME /home/adambreznen/OneDrive/DocumentsRepository
-
 # Build the project
 RUN mvn clean package
 
 # Run the Java application
-CMD ["java", "-jar", "target/queryengine.jar", "We/are/great/developers","8080"]
+CMD ["java", "-jar", "target/queryengine.jar", "http://34.16.163.134","8080"]
 
-#
 EXPOSE 8080
+EXPOSE 4003
