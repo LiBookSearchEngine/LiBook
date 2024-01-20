@@ -1,4 +1,4 @@
-package org.libook.connections;
+package org.libook.controller.connections;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;

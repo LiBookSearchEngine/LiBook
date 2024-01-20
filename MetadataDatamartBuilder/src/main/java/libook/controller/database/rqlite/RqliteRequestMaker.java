@@ -1,6 +1,6 @@
 package libook.controller.database.rqlite;
 
-import libook.Main;
+import libook.MetadataBuilderMain;
 import libook.controller.database.DatabaseRequestMaker;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class RqliteRequestMaker implements DatabaseRequestMaker {
-    private static final String RQLITE_URL = Main.LOCAL_MDB_API + ":4001";
+    private static final String RQLITE_URL = MetadataBuilderMain.LOCAL_MDB_API + ":4001";
     private static RqliteRequestMaker instance;
 
     public RqliteRequestMaker() {

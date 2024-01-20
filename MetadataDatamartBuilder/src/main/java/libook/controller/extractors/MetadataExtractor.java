@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 
 public class MetadataExtractor {
 
-    public static MetadataBook extractMetadata(String text) {
+    public static MetadataBook extractMetadata(String id, String text) {
         String title = extractTitle(text);
         String author = extractAuthor(text);
         Date releaseDate = extractReleaseDate(text);
         String language = extractLanguage(text);
 
-        return new MetadataBook(title, author, releaseDate, language);
+        return new MetadataBook(id, title, author, releaseDate, language);
     }
 
     private static String extractTitle(String text) {

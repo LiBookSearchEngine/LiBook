@@ -1,16 +1,16 @@
 package org.libook.api;
 
 import com.google.gson.Gson;
-import org.libook.connections.MongoConnection;
-import controller.bookhandler.DatamartBookHandler;
-import controller.bookhandler.MongoBookHandler;
-import controller.loggers.MongoUserLogger;
-import controller.loggers.UserLogger;
-import controller.registers.MongoUserRegister;
-import controller.registers.UserRegister;
-import controller.sessions.SessionHandler;
-import model.Book;
-import model.User;
+import org.libook.controller.connections.MongoConnection;
+import org.libook.controller.bookhandler.DatamartBookHandler;
+import org.libook.controller.bookhandler.MongoBookHandler;
+import org.libook.controller.loggers.MongoUserLogger;
+import org.libook.controller.loggers.UserLogger;
+import org.libook.controller.registers.MongoUserRegister;
+import org.libook.controller.registers.UserRegister;
+import org.libook.controller.sessions.SessionHandler;
+import org.libook.model.Book;
+import org.libook.model.User;
 
 import javax.jms.JMSException;
 

@@ -1,11 +1,10 @@
-package controller.sessions.cookie;
+package org.libook.controller.sessions.cookie;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
-import com.hazelcast.multimap.MultiMap;
-import controller.sessions.SessionHandler;
-import model.User;
+import org.libook.controller.sessions.SessionHandler;
+import org.libook.model.User;
 
 import java.security.SecureRandom;
 import java.util.Base64;

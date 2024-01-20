@@ -19,16 +19,18 @@ import java.util.Date;
 public class AsynchronousReaderThread extends Thread {
     private final String contentPath;
     private final String eventPath;
-    private final Consumer eventConsumer;
+    private final String indexerId;
+    private Consumer eventConsumer;
     private final Publisher eventPublisher;
     private final String apiUrl;
 
-    public AsynchronousReaderThread(String contentPath, String eventPath, String apiUrl, String indexerId) throws JMSException {
+    public AsynchronousReaderThread(String contentPath, String eventPath, String apiUrl, String indexerId) {
         this.contentPath = contentPath;
         this.eventPath = eventPath;
-        this.eventConsumer = new EventConsumer(Integer.toString(Main.SERVER_MQ_PORT), "cleanerEvents", apiUrl);
-        this.eventPublisher = new EventPublisher(Integer.toString(Main.SERVER_MQ_PORT), "readEvents" + indexerId, apiUrl);
         this.apiUrl = apiUrl;
+        this.indexerId = indexerId;
+        this.eventConsumer = getCleanerConsumer();
+        this.eventPublisher = getPublisher();
     }
 
     public void run() {
@@ -42,12 +44,36 @@ public class AsynchronousReaderThread extends Thread {
                 System.out.println("Reading file " + file);
                 addToEvents(Path.of(file));
                 addToContent(Path.of(file));
-                System.out.println("File " + file + " read");
                 eventPublisher.publish(file);
-
+                System.out.println("File " + file + " read");
+                Thread.sleep(5000);
             } catch (Exception e) {
-                e.printStackTrace();
+                eventConsumer = getCleanerConsumer();
             }
+        }
+    }
+
+    private EventConsumer getCleanerConsumer() {
+        try {
+            Thread.sleep(5000);
+            return new EventConsumer(Integer.toString(Main.SERVER_MQ_PORT), "cleanerEvents", apiUrl);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getCleanerConsumer();
+        }
+    }
+
+    private EventPublisher getPublisher() {
+        try {
+            Thread.sleep(5000);
+            return new EventPublisher(Integer.toString(Main.SERVER_MQ_PORT),
+                    "readEvents" + indexerId,
+                    apiUrl);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getPublisher();
         }
     }
 

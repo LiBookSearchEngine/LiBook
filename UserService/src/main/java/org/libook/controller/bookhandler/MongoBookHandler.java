@@ -1,12 +1,12 @@
-package controller.bookhandler;
+package org.libook.controller.bookhandler;
 
 import com.mongodb.client.model.Filters;
-import org.libook.connections.MongoConnection;
-import controller.http.connections.ConnectionHandler;
-import controller.http.connections.HTTPConnectionHandler;
-import model.Book;
-import model.BookInfo;
-import model.User;
+import org.libook.controller.connections.MongoConnection;
+import org.libook.controller.http.connections.ConnectionHandler;
+import org.libook.controller.http.connections.HTTPConnectionHandler;
+import org.libook.model.Book;
+import org.libook.model.BookInfo;
+import org.libook.model.User;
 import org.bson.Document;
 
 import javax.jms.JMSException;

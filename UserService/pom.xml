@@ -63,7 +63,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>UserServiceMain</mainClass>
+                            <mainClass>org.libook.UserServiceMain</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -73,7 +73,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.4.0</version>
                 <configuration>
-                    <mainClass>UserServiceMain</mainClass>
+                    <mainClass>org.libook.UserServiceMain</mainClass>
                 </configuration>
             </plugin>
             <plugin>

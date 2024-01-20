@@ -1,6 +1,6 @@
-package controller.sessions;
+package org.libook.controller.sessions;
 
-import model.User;
+import org.libook.model.User;
 
 public interface SessionHandler {
     String getSessionToken(User user);

@@ -1,20 +1,16 @@
-package controller.http.connections;
+package org.libook.controller.http.connections;
 
-import model.Book;
+import org.libook.model.Book;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import spark.Request;
-import spark.Response;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Map;
 
 public class HTTPConnectionHandler implements ConnectionHandler {
     private final String SERVER_API_URL;

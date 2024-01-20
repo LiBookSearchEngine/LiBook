@@ -1,8 +1,8 @@
-package controller.loaders;
+package org.libook.controller.loaders;
 
 import com.mongodb.client.model.Filters;
-import org.libook.connections.MongoConnection;
-import model.User;
+import org.libook.controller.connections.MongoConnection;
+import org.libook.model.User;
 import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
 
