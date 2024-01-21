@@ -71,10 +71,10 @@ susanasrez/queryengine2
 
 The user service will be connected to both Hazelcast and MongoDB datamarts, so make sure to use the ```--network=host``` and you have a MongoDB Atlas account. So:
 ```
-docker run -p 8082:8080
-            -e ""MONGO_ATLAS_PASSWORD={your password}"
-            -e "SERVER_API_URL=http://{server's IP}"
-          ricardocardn/user-service
+ docker run -p 8082:8082
+            -e "MONGO_ATLAS_PASSWORD=..."
+            -e "SERVER_API_URL=http://34.16.163.134"
+            -e "SERVER_BOOKS_PORT=80" ricardocardn/user-service
 ```
 
 <h3><b>Local API Gateway</b></h3>
