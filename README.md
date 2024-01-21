@@ -29,7 +29,12 @@ For each module, you should generate the corresponding docker image. In our case
 To execute the indexer, we should run the docker image as follows:
 
 ```
-docker run --network host ricardocardn/indexer
+docker run -p 8082:8082
+            -e "SERVER_API_URL=http://34.16.163.134"
+            -e "SERVER_MQ_PORT=443"
+            -e "index=1"
+            --network host
+ricardocardn/indexer                  
 ```
 
 Make sure you should specify the option ```--network host```, or some problems related to Hazelcast may raise.
@@ -45,11 +50,11 @@ docker run -p4001:4001 -p4002:4002 rqlite/rqlite
 And, for the Metadata Datamart builder, execute:
 
 ```
-docker run -e "SERVER_MQ_PORT={port}"
-            -e "SERVER_API_URL=http://{server's IP}"
-            -e "SERVER_CLEANER_PORT={cleaner's port on server}"
-            -e "LOCAL_MDB_API=http://{rqlite's API address}"
-        ricardocardn/metadata-datamart-builder
+docker run -e "SERVER_MQ_PORT=443"
+            -e "SERVER_API_URL=http://34.16.163.134"
+            -e "SERVER_CLEANER_PORT=80"
+            -e "LOCAL_MDB_API=http://34.16.163.134"
+ricardocardn/metadata-datamart-builder
 ```
 
 <h3><b>Query Engine</b></h3>
@@ -57,9 +62,9 @@ docker run -e "SERVER_MQ_PORT={port}"
 Query engine will make use of both Hazelcast and Rqlite, so we should run its images as follows:
 
 ```
-docker run -p 8080:8080 --network host
-            -e "LOCAL_MDB_API=http://{rqlite's API address}"
-         susanasrez/queryengine
+docker run -p 8080:8080
+            --network host
+susanasrez/queryengine2
 ```
 
 <h3><b>User Service</b></h3>
