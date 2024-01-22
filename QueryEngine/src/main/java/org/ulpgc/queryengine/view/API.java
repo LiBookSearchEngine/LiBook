@@ -58,7 +58,7 @@ public class API {
     private static void getWordDocuments() {
         get("/datamart/:word", (req, res) -> {
             String word = req.params("word");
-            List<Object> documents = readHazelcastWords.getWord(word);
+            List<Map<String, MetadataBook>> documents = readHazelcastWords.getWord(word);
             return (new Gson()).toJson(documents);
         });
     }

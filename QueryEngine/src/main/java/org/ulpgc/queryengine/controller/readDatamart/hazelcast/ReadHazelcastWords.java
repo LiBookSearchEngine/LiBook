@@ -1,5 +1,6 @@
 package org.ulpgc.queryengine.controller.readDatamart.hazelcast;
 
+import com.google.gson.Gson;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.ulpgc.queryengine.controller.exceptions.ObjectNotFoundException;
@@ -23,6 +24,15 @@ public class ReadHazelcastWords {
 
     public ReadHazelcastWords(HazelcastInstance hazelcastInstance, CleanerAPIClient client){
         this.hazelcastMap = hazelcastInstance.getMap("datamart");
+        List<String> books = new ArrayList<>();
+        books.add("1");
+        books.add("2");
+        hazelcastMap.put("hand", books);
+        List<String> books2 = new ArrayList<>();
+        books2.add("1");
+        books2.add("61415");
+        hazelcastMap.put("job", books2);
+
         this.cleanerAPIClient = client;
         this.readGoogleCloudObjects = new ReadGoogleCloudObjects(client);
     }
@@ -30,15 +40,6 @@ public class ReadHazelcastWords {
     public List<String> get_documents(String word) {
         word = word.toLowerCase();
         List<String> documents = hazelcastMap.get(word);
-
-        if (documents == null) {
-            try {
-                documents = readGoogleCloudObjects.get_documents(word);
-                hazelcastMap.put(word, documents);
-            } catch (ObjectNotFoundException e) {
-                return new ArrayList<>();
-            }
-        }
 
         return documents;
     }
@@ -83,15 +84,15 @@ public class ReadHazelcastWords {
         return recommendBooks;
     }
 
-    public List<Object> getWord(String word){
+    public List<Map<String, MetadataBook>> getWord(String word){
         List<WordDocuments> wordDocumentsList = getDocumentsWord(word);
         List<String> idBook = wordDocumentsList.get(0).documentsId();
-        List<Object> recommendBooks = new ArrayList<>();
+        List<Map<String, MetadataBook>> recommendBooks = new ArrayList<>();
         for(String id: idBook){
             Map<String, MetadataBook> metadataBookMap = getTitleForId(id);
             recommendBooks.add(metadataBookMap);
         }
-
+;
         return recommendBooks;
     }
 
