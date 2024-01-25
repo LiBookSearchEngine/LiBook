@@ -1,9 +1,7 @@
 package org.ulpgc.queryengine.controller.readDatamart.hazelcast;
 
-import com.google.gson.Gson;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
-import org.ulpgc.queryengine.controller.exceptions.ObjectNotFoundException;
 import org.ulpgc.queryengine.controller.readDatalake.CleanerAPIClient;
 import org.ulpgc.queryengine.controller.readDatamart.google.cloud.ReadGoogleCloudObjects;
 import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteQuery;
@@ -24,6 +22,12 @@ public class ReadHazelcastWords {
 
     public ReadHazelcastWords(HazelcastInstance hazelcastInstance, CleanerAPIClient client){
         this.hazelcastMap = hazelcastInstance.getMap("datamart");
+        insertExamples();
+        this.cleanerAPIClient = client;
+        this.readGoogleCloudObjects = new ReadGoogleCloudObjects(client);
+    }
+
+    private void insertExamples(){
         List<String> books = new ArrayList<>();
         books.add("1");
         books.add("2");
@@ -32,9 +36,10 @@ public class ReadHazelcastWords {
         books2.add("1");
         books2.add("61415");
         hazelcastMap.put("job", books2);
-
-        this.cleanerAPIClient = client;
-        this.readGoogleCloudObjects = new ReadGoogleCloudObjects(client);
+        List<String> books3 = new ArrayList<>();
+        books3.add("6085");
+        books3.add("39773");
+        hazelcastMap.put("code", books3);
     }
 
     public List<String> get_documents(String word) {

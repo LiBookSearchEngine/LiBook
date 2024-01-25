@@ -3,7 +3,6 @@ package org.ulpgc.queryengine;
 import org.ulpgc.queryengine.controller.Controller;
 import org.ulpgc.queryengine.controller.readMetadata.DatabaseDMLHandler;
 import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteDMLHandler;
-import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteQuery;
 import org.ulpgc.queryengine.controller.readMetadata.readrqlite.RqliteRequestMaker;
 import org.ulpgc.queryengine.model.MetadataBook;
 
@@ -31,6 +30,12 @@ public class Main {
         MetadataBook metadataBook3 = new MetadataBook("Místicas; poesías by María Raquel Adler",
                 "Carlos", "01/01/2024", "Spanish");
         databaseDMLHandler.insertMetadata(metadataBook3, "61415");
+        MetadataBook metadataBook1 = new MetadataBook("Clean code: A Handbook of Agile Software Craftsmanship",
+                "José Juan", "01/08/2008", "English");
+        databaseDMLHandler.insertMetadata(metadataBook1, "6085");
+        MetadataBook metadataBook4 = new MetadataBook("Design Patterns: Elements of Reusable Object-Oriented Software (Addison Wesley professional computing series)",
+                "José Évora", "31/10/1994", "English");
+        databaseDMLHandler.insertMetadata(metadataBook4, "39773");
 
     }
 }
